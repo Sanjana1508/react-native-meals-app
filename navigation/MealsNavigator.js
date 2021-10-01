@@ -25,12 +25,9 @@ import FavoritesScreen, {
 import FiltersScreen, {
   screenOptions as FiltersScreenOptions,
 } from "../screens/FiltersScreen";
+import ApolloClientScreen from "../screens/ApolloClientScreen";
 
-import DummyScreen, {
-  screenOptions as DummyScreenOptions,
-} from "../screens/DummyScreen";
 import Colors from "../constants/Colors";
-import CustomHeaderButton from "../components/atoms/HeaderButton";
 
 const defaultStackNavOptions = {
   headerStyle: {
@@ -155,6 +152,7 @@ const MealsFavTabNavigator = (navigation) => {
     <MealsFavBottomTabNavigator.Navigator
       screenOptions={{
         tabBarActiveTintColor: "white",
+        tabBarActiveBackgroundColor: Colors.accentColor,
         tabBarStyle: [
           {
             display: "flex",
@@ -171,13 +169,7 @@ const MealsFavTabNavigator = (navigation) => {
         screenProps={{ rootNavigation: navigation }}
         options={{
           tabBarIcon: (tabInfo) => {
-            return (
-              <Ionicons
-                name="ios-restaurant"
-                size={25}
-                color={tabInfo.tintColor}
-              />
-            );
+            return <Ionicons name="ios-restaurant" size={25} color="white" />;
           },
           tabBarColor: Colors.primary,
         }}
@@ -205,9 +197,7 @@ const MealsFavTabNavigator = (navigation) => {
         component={FavNavigator}
         options={{
           tabBarIcon: (tabInfo) => {
-            return (
-              <Ionicons name="ios-star" size={25} color={tabInfo.tintColor} />
-            );
+            return <Ionicons name="ios-star" size={25} color="white" />;
           },
           tabBarColor: Colors.accentColor,
           // tabBarLabel:
@@ -288,6 +278,10 @@ export const MainNavigator = (navigation) => {
         name=" Your Filters"
         component={FiltersNavigator}
         options={{ headerShown: false }}
+      />
+      <MainDrawerNavigator.Screen
+        name="Apollo Client"
+        component={ApolloClientScreen}
       />
     </MainDrawerNavigator.Navigator>
   );
